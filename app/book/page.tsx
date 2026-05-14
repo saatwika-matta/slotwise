@@ -5,8 +5,8 @@ import { getAvailableSlots, createBooking } from "@/app/actions/bookings";
 
 type Slot = {
   id: string;
-  startTime: string;
-  endTime: string;
+  startTime: Date;
+  endTime: Date;
   staff: { name: string };
 };
 
@@ -19,7 +19,7 @@ export default function BookPage() {
   useEffect(() => {
     async function fetchSlots() {
       const data = await getAvailableSlots();
-      setSlots(data as Slot[]);
+      setSlots(data as unknown as Slot[]);
     }
     fetchSlots();
   }, []);
