@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { getAllBookings, cancelBooking } from "@/app/actions/admin";
 
 type Booking = {
-  id: string;
-  guestName: string;
-  guestEmail: string;
-  reason: string | null;
-  createdAt: string;
-  slot: {
-    startTime: string;
-    endTime: string;
-    staff: { name: string };
+    id: string;
+    guestName: string;
+    guestEmail: string;
+    reason: string | null;
+    createdAt: Date;
+    slot: {
+      startTime: Date;
+      endTime: Date;
+      staff: { name: string };
+    };
   };
-};
 
 export default function AdminPage() {
   const [bookings, setBookings] = useState<Booking[]>([]);
@@ -23,7 +23,7 @@ export default function AdminPage() {
 
   async function fetchBookings() {
     const data = await getAllBookings();
-    setBookings(data as Booking[]);
+    setBookings(data as unknown as Booking[]);
     setLoading(false);
   }
 
