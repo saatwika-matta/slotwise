@@ -24,8 +24,8 @@ export default function BookPage() {
     fetchSlots();
   }, []);
 
-  function formatTime(dateStr: string) {
-    return new Date(dateStr).toLocaleString("en-US", {
+  function formatTime(date: Date) {
+    return new Date(date).toLocaleString("en-US", {
       weekday: "short",
       month: "short",
       day: "numeric",
